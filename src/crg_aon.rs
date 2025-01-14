@@ -20,6 +20,14 @@ impl CrgAon {
             .pad_latch_reg
             .write(|w| w.pad_latch_en().bit(state));
     }
+
+    /// true - disable hardware reset
+    /// false - enable hardware reset
+    pub fn hardware_reset_dis(&mut self, state: bool) {
+        self.crg_aon
+            .hwr_ctrl_reg
+            .write(|w| w.disable_hwr().bit(state))
+    }
 }
 
 pub mod sleep {
